@@ -1,13 +1,16 @@
+const connection = require('../config/database')
 
+let user = [];
 const getHomepage = (req, res) => {
-    // call model
-    // process data
-    res.send('Hello word');
+    return res.render('home.ejs');
 }
 
 const getSample = (req, res) => {
     res.render('sample.ejs');
 }
+
+
+
 module.exports = {
     getHomepage,
     getSample
