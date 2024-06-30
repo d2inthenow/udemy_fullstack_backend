@@ -9,9 +9,14 @@ const getSample = (req, res) => {
     res.render('sample.ejs');
 }
 
+const postCreateUser = (req, res) => {
+    console.log(req.body);
+    res.send('CREATE NEW USER');
+}
 
 
 module.exports = {
     getHomepage,
-    getSample
+    getSample,
+    postCreateUser
 }

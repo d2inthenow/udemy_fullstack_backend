@@ -43,3 +43,19 @@ h1 {
     background-color: #04AA6D;
     color: white;
 }
+
+.form-add-user {
+    margin: 0 auto;
+    padding: 20px;
+
+}
+
+.input-group {
+    padding: 10px;
+}
+
+button {
+    cursor: pointer;
+    margin: 10px;
+    color: red;
+}
