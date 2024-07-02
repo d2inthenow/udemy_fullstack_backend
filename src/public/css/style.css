@@ -84,3 +84,7 @@ tr:hover {
     text-align: center;
     padding: 8px;
 }
+
+.d-none {
+    display: none;
+}
