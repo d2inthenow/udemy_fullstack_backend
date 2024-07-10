@@ -13,7 +13,9 @@ const hostname = process.env.HOST_NAME;
 
 const webRouter = require('./routes/web');
 
-const connection = require('./config/database')
+const connnection = require('./config/database')
+
+const mongoose = require('mongoose');
 
 
 app.use(express.json());
@@ -23,18 +25,24 @@ app.use(express.urlencoded({ extended: true }));
 configViewEngine(app);
 
 //khai bao route
-app.use('/', webRouter)
+app.use('/', webRouter);
 
+const kittySchema = new mongoose.Schema({
+    name: String
+});
 
+const Kitten = mongoose.model('Kitten', kittySchema);
 
-// A simple SELECT query
-// connection.query(
-//     'SELECT * FROM `Users`',
-//     function (err, results) {
-//         console.log(">>>results = ", results); // results contains rows returned by server
-//     }
-// );
+const silence = new Kitten({ name: 'Duong' });
 
-app.listen(port, hostname, () => {
-    console.log(`Example app listening on port ${port}`)
-}); 
+silence.save();
+(async () => {
+    try {
+        await connnection();
+        app.listen(port, hostname, () => {
+            console.log(`Example app listening on port ${port}`)
+        })
+    } catch (error) {
+        console.log(">>>ERROR CONNECTION DATABASE: ", error)
+    }
+})();
