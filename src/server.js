@@ -13,9 +13,11 @@ const hostname = process.env.HOST_NAME;
 
 const webRouter = require('./routes/web');
 
-const connnection = require('./config/database')
+const connnection = require('./config/database');
 
 const mongoose = require('mongoose');
+
+const Kitten = require('./model/Kitten');
 
 
 app.use(express.json());
@@ -27,15 +29,7 @@ configViewEngine(app);
 //khai bao route
 app.use('/', webRouter);
 
-const kittySchema = new mongoose.Schema({
-    name: String
-});
 
-const Kitten = mongoose.model('Kitten', kittySchema);
-
-const silence = new Kitten({ name: 'Duong' });
-
-silence.save();
 (async () => {
     try {
         await connnection();
