@@ -13,6 +13,9 @@ const hostname = process.env.HOST_NAME;
 
 const webRouter = require('./routes/web');
 
+const APIRouter = require('./routes/api');
+
+
 const connnection = require('./config/database');
 
 const mongoose = require('mongoose');
@@ -28,6 +31,8 @@ configViewEngine(app);
 
 //khai bao route
 app.use('/', webRouter);
+
+app.use('/v1/api/', APIRouter);
 
 
 (async () => {
