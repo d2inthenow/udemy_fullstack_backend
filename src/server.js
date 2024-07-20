@@ -20,9 +20,14 @@ const connnection = require('./config/database');
 
 const mongoose = require('mongoose');
 
-const Kitten = require('./model/Kitten');
+// const Kitten = require('./model/Kitten');
 
+const fileUpload = require('express-fileupload')
 
+//config fileUpload
+app.use(fileUpload());
+
+//config re.body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
