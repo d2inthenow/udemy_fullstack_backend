@@ -2,6 +2,7 @@ const { uploadSingleFile, uploadMultipleFile } = require('../services/fileServic
 
 const { CreateCustomerServices, CreateArrayCustomerServices, getCustomerApiService, DeleteACustomerServices, DeleteArrayCustomerServices } = require('../services/customerServices')
 
+const aqp = require('api-query-params');
 const postCreateCustomer = async (req, res) => {
 
     let { name, address, phone, email, decription } = req.body;
@@ -49,12 +50,14 @@ const postCreateArrayCustomer = async (req, res) => {
 }
 
 const getAllCustomer = async (req, res) => {
+
+
     let limit = req.query.limit;
     let page = req.query.page;
     let result = null;
-
+    let name = req.query.name;
     if (limit && page) {
-        result = await getCustomerApiService(limit, page);
+        result = await getCustomerApiService(limit, page, name, req.query);
     } else {
         result = await getCustomerApiService();
     }
